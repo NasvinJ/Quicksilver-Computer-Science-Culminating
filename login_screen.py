@@ -2,14 +2,16 @@
  
 from tkinter import *
 import os
- 
+
+#REPOSITION BUTTONS
+
 # Designing window for registration
  
 def register():
     global register_screen
     register_screen = Toplevel(main_screen)
     register_screen.title("Register")
-    register_screen.geometry("300x250")
+    register_screen.geometry("400x350")
  
     global username
     global password
@@ -18,18 +20,22 @@ def register():
     username = StringVar()
     password = StringVar()
  
-    Label(register_screen, text="Please enter details below", bg="blue").pack()
+    Label(register_screen, text="Please enter details below", bg="#87ceeb", relief="solid", height=2, font=("Calibri", 13)).pack()
     Label(register_screen, text="").pack()
-    username_lable = Label(register_screen, text="Username * ")
+    Label(register_screen, height=1).pack()
+    username_lable = Label(register_screen, text="Username * ", font=(10))
     username_lable.pack()
     username_entry = Entry(register_screen, textvariable=username)
     username_entry.pack()
-    password_lable = Label(register_screen, text="Password * ")
+    Label(register_screen, height=2).pack()
+    password_lable = Label(register_screen, text="Password * ", font=(10))
     password_lable.pack()
     password_entry = Entry(register_screen, textvariable=password, show='*')
     password_entry.pack()
     Label(register_screen, text="").pack()
-    Button(register_screen, text="Register", width=10, height=1, bg="blue", command = register_user).pack()
+    Button(register_screen, text="Register", width=10, height=1, bg="#87ceeb", command = register_user).pack()
+    Label(register_screen, height=3).pack()
+    Label(register_screen, width="300", height="3", bg="dimgrey").pack()
  
  
 # Designing window for login 
@@ -38,8 +44,8 @@ def login():
     global login_screen
     login_screen = Toplevel(main_screen)
     login_screen.title("Login")
-    login_screen.geometry("300x250")
-    Label(login_screen, text="Please enter details below to login").pack()
+    login_screen.geometry("400x350")
+    Label(login_screen, text="Please enter details below", bg="#87ceeb", relief="solid", height=2, font=("Calibri", 13)).pack()
     Label(login_screen, text="").pack()
  
     global username_verify
@@ -50,16 +56,20 @@ def login():
  
     global username_login_entry
     global password_login_entry
- 
-    Label(login_screen, text="Username * ").pack()
+  
+    Label(login_screen, height=1).pack()
+    Label(login_screen, text="Username * ", font=(10)).pack()
     username_login_entry = Entry(login_screen, textvariable=username_verify)
     username_login_entry.pack()
     Label(login_screen, text="").pack()
-    Label(login_screen, text="Password * ").pack()
+    Label(login_screen, height=1).pack()
+    Label(login_screen, text="Password * ", font=(10)).pack()
     password_login_entry = Entry(login_screen, textvariable=password_verify, show= '*')
     password_login_entry.pack()
     Label(login_screen, text="").pack()
-    Button(login_screen, text="Login", width=10, height=1, command = login_verify).pack()
+    Button(login_screen, text="Login", width=10, height=1, bg="#87ceeb", command = login_verify).pack()
+    Label(login_screen, height=3).pack()
+    Label(login_screen, width="300", height="3", bg="dimgrey").pack()
  
 # Implementing event on register button
  
@@ -105,7 +115,7 @@ def login_sucess():
     global login_success_screen
     login_success_screen = Toplevel(login_screen)
     login_success_screen.title("Success")
-    login_success_screen.geometry("150x100")
+    login_success_screen.geometry("250x200")
     Label(login_success_screen, text="Login Success").pack()
     Button(login_success_screen, text="OK", command=delete_login_success).pack()
  
@@ -115,7 +125,7 @@ def password_not_recognised():
     global password_not_recog_screen
     password_not_recog_screen = Toplevel(login_screen)
     password_not_recog_screen.title("Success")
-    password_not_recog_screen.geometry("150x100")
+    password_not_recog_screen.geometry("250x200")
     Label(password_not_recog_screen, text="Invalid Password ").pack()
     Button(password_not_recog_screen, text="OK", command=delete_password_not_recognised).pack()
  
@@ -125,7 +135,7 @@ def user_not_found():
     global user_not_found_screen
     user_not_found_screen = Toplevel(login_screen)
     user_not_found_screen.title("Success")
-    user_not_found_screen.geometry("150x100")
+    user_not_found_screen.geometry("250x200")
     Label(user_not_found_screen, text="User Not Found").pack()
     Button(user_not_found_screen, text="OK", command=delete_user_not_found_screen).pack()
  
@@ -148,14 +158,17 @@ def delete_user_not_found_screen():
 def main_account_screen():
     global main_screen
     main_screen = Tk()
-    main_screen.geometry("300x250")
+    main_screen.geometry("400x350")
     main_screen.title("Account Login")
-    Label(text="Select Your Choice", bg="blue", width="300", height="2", font=("Calibri", 13)).pack()
+    Label(text="Select Your Choice", bg="#87ceeb", width="300", relief="solid", height="2", font=("Calibri", 13)).pack()
+  #CAN I USE THIS METHOD???
+    Label(height="3").pack()
     Label(text="").pack()
-    Button(text="Login", height="2", width="30", command = login).pack()
+    Button(text="Login", height="3", width="30", command = login).pack()
     Label(text="").pack()
-    Button(text="Register", height="2", width="30", command=register).pack()
- 
+    Button(text="Register", height="3", width="30", command=register).pack()
+    Label(height="4").pack()
+    Label(width="300", height="2", bg="dimgrey").pack()
     main_screen.mainloop()
  
  
