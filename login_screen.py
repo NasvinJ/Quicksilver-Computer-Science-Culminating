@@ -113,12 +113,17 @@ def login_screen_gui():
    
   def login_sucess():
       global login_success_screen
-      global main_account_screen #USE THISSS
+      global exitlogin #USE THISSS
       login_success_screen = Toplevel(login_screen)
       login_success_screen.title("Success")
       login_success_screen.geometry("250x200")
+      # exitlogin = Toplevel(login_screen)
+      # exitlogin.title("Exit Login Screen")
+      # exitlogin.geometry("250x200")
       Label(login_success_screen, text="Login Success").pack()
-      Button(login_success_screen, text="OK", command=delete_login_success).pack()
+      Button(login_success_screen, text="OK", command=delete_login_success and delete_login_screen and delete_main_screen).pack()
+      # Label(exitlogin, text="Exit").pack()
+      # Button(exitlogin, text="Ok", command=delete_login_screen).pack()
    
   # Designing popup for login invalid password
    
@@ -141,10 +146,15 @@ def login_screen_gui():
       Button(user_not_found_screen, text="OK", command=delete_user_not_found_screen).pack()
    
   # Deleting popups
-   
+
+  def delete_login_screen():
+      login_screen.destroy()
+
+  def delete_main_screen():
+      main_screen.destroy()
+  
   def delete_login_success():
       login_success_screen.destroy()
-   
    
   def delete_password_not_recognised():
       password_not_recog_screen.destroy()
