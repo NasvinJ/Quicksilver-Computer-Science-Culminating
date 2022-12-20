@@ -4,9 +4,9 @@ from pygame import display, event
 
 def get_font(size):  # Returns Press-Start-2P in the desired size
   return pygame.font.Font("assets/font.ttf", size)
+pygame.init()
 
 def home_screen_gui():
-  pygame.init()
   infoObject = pygame.display.Info()
 
   #create the display surface to grab the size of the pygame screen
@@ -40,18 +40,19 @@ def home_screen_gui():
 
   def game_screen():
     while True:
+      display.set_caption("Game Screen")
       options_mouse_pos = pygame.mouse.get_pos()
       screen.fill("dark gray")
       hey_font = pygame.font.Font("assets/font.ttf", 20)
-      options_text =hey_font.render("Pick Your Movie!", True,
+      options_text =hey_font.render("Pick a Speed Test!", True,
                                          "Black")
-      options_rect = options_text.get_rect(center=(640, 130))
+      options_rect = options_text.get_rect(center=(375, 70))
       screen.blit(options_text, options_rect)
 
       options_back = Button(image=None,
-                      pos=(1100, 50),
+                      pos=(630, 40),
                       text_input="BACK",
-                      font=get_font(60),
+                      font=get_font(45),
                       base_color="Blue",
                       hovering_color="Green")
 
@@ -65,6 +66,18 @@ def home_screen_gui():
         if event.type == pygame.MOUSEBUTTONDOWN:
             if options_back.checkForInput(options_mouse_pos):
                 run_test()
+
+        # typing_test_button = Button(image=None,
+        #                 pos=(300, 300),
+        #                 text_input="Typing Speed Test",
+        #                 font=get_font(17),
+        #                 base_color="White",
+        #                 hovering_color="Black")
+
+        # typing_test_button.changeColor(options_mouse_pos)
+        # typing_test_button.update(screen)
+
+      pygame.display.update()
   
   def run_test():
     while True:
@@ -74,9 +87,9 @@ def home_screen_gui():
       menu_rect = menu_text.get_rect(center=(640, 100))
       
       options_button = Button(
-      image=pygame.image.load("assets/Options Rect.png"),
-      pos=(640, 475),
-      text_input="Enter",
+      image=pygame.image.load("assets/Options_Rect.png"),
+      pos=(380, 230),
+      text_input="Run Test",
       font=get_font(60),
       base_color="#d7fcd4",
       hovering_color="White")
