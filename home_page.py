@@ -1,4 +1,9 @@
-import pygame,sys,time
+import pygame,sys
+from button import Button
+from pygame import display, event
+
+def get_font(size):  # Returns Press-Start-2P in the desired size
+  return pygame.font.Font("assets/font.ttf", size)
 
 def home_screen_gui():
   pygame.init()
@@ -21,6 +26,75 @@ def home_screen_gui():
     #push the image out to the pygame screen
     screen.blit("quicksilver_main_bg.jpg", (infoObject.current_w, infoObject.current_h))
 
-  BG=pygame.image.load("quicksilver_main_bg.jpg")
+  bg=pygame.image.load("quicksilver_main_bg.jpg")
 
-  screen.blit(BG, (0, 0))
+  screen.blit(bg, (0, 0))
+
+  # while True:
+  #   allevents = event.get()
+  #   for myevent in allevents:
+  #     if myevent.type == pygame.QUIT:
+  #       sys.exit()
+  
+  display.flip()
+
+  def game_screen():
+    while True:
+      options_mouse_pos = pygame.mouse.get_pos()
+      screen.fill("dark gray")
+      hey_font = pygame.font.Font("assets/font.ttf", 20)
+      options_text =hey_font.render("Pick Your Movie!", True,
+                                         "Black")
+      options_rect = options_text.get_rect(center=(640, 130))
+      screen.blit(options_text, options_rect)
+
+      options_back = Button(image=None,
+                      pos=(1100, 50),
+                      text_input="BACK",
+                      font=get_font(60),
+                      base_color="Blue",
+                      hovering_color="Green")
+
+      options_back.changeColor(options_mouse_pos)
+      options_back.update(screen)
+
+      for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if options_back.checkForInput(options_mouse_pos):
+                run_test()
+  
+  def run_test():
+    while True:
+      screen.blit(bg, (0, 0))
+      menu_mouse_pos = pygame.mouse.get_pos()
+      menu_text = get_font(100).render("", True, "#b68f40")
+      menu_rect = menu_text.get_rect(center=(640, 100))
+      
+      options_button = Button(
+      image=pygame.image.load("assets/Options Rect.png"),
+      pos=(640, 475),
+      text_input="Enter",
+      font=get_font(60),
+      base_color="#d7fcd4",
+      hovering_color="White")
+      
+      screen.blit(menu_text, menu_rect)
+  
+      for button in [options_button]:
+        button.changeColor(menu_mouse_pos)
+        button.update(screen)
+  
+      for event in pygame.event.get():
+          if event.type == pygame.QUIT:
+              pygame.quit()
+              sys.exit()
+          if event.type == pygame.MOUSEBUTTONDOWN:
+              if options_button.checkForInput(menu_mouse_pos):
+                  game_screen()
+
+      pygame.display.update()
+
+  run_test()
