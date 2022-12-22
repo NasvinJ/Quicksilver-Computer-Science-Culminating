@@ -29,17 +29,12 @@ def home_screen_gui():
   bg=pygame.image.load("quicksilver_main_bg.jpg")
 
   screen.blit(bg, (0, 0))
-
-  # while True:
-  #   allevents = event.get()
-  #   for myevent in allevents:
-  #     if myevent.type == pygame.QUIT:
-  #       sys.exit()
   
   display.flip()
 
   def game_screen():
     while True:
+      screen = pygame.display.set_mode((infoObject.current_w * 1.4, infoObject.current_h / 1.1))
       display.set_caption("Game Screen")
       options_mouse_pos = pygame.mouse.get_pos()
       screen.fill("dark gray")
@@ -67,15 +62,15 @@ def home_screen_gui():
             if options_back.checkForInput(options_mouse_pos):
                 run_test()
 
-        # typing_test_button = Button(image=None,
-        #                 pos=(300, 300),
-        #                 text_input="Typing Speed Test",
-        #                 font=get_font(17),
-        #                 base_color="White",
-        #                 hovering_color="Black")
+        typing_test_button = Button(image=None,
+                        pos=(150, 200),
+                        text_input="Typing Speed Test",
+                        font=get_font(17),
+                        base_color="White",
+                        hovering_color="Black")
 
-        # typing_test_button.changeColor(options_mouse_pos)
-        # typing_test_button.update(screen)
+        typing_test_button.changeColor(options_mouse_pos)
+        typing_test_button.update(screen)
 
       pygame.display.update()
   
