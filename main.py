@@ -6,4 +6,4 @@ import game1_speed_typing_test
 # log_scr.login_screen_gui()
 # loading_screen.loading_screen_gui()
 # home_page.home_screen_gui()
-game1_speed_typing_test()
+game1_speed_typing_test.speed_typing_gui_screen()
