@@ -2,8 +2,10 @@ import login_screen as log_scr
 import loading_screen
 import home_page
 import game1_speed_typing_test
+import game2_internet_speed_test
 
 # log_scr.login_screen_gui()
 # loading_screen.loading_screen_gui()
 # home_page.home_screen_gui()
-game1_speed_typing_test.speed_typing_gui_screen()
+# game1_speed_typing_test.speed_typing_gui_screen()
+game2_internet_speed_test()

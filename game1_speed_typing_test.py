@@ -9,8 +9,8 @@ import random
 def speed_typing_gui_screen():
   class Game:
       def __init__(self):
-          self.w=750
-          self.h=500
+          self.w=740
+          self.h=460
           self.reset=True
           self.speed = True
           self.active = False
@@ -79,26 +79,26 @@ def speed_typing_gui_screen():
                 self.speed_img = pygame.image.load('turtle.png')
                 self.speed_img = pygame.transform.scale(self.speed_img, (150,150))
                 #screen.blit(self.time_img, (80,320))
-                screen.blit(self.speed_img, (self.w/2-357,self.h-160))
+                screen.blit(self.speed_img, (self.w/2-357,self.h-150))
               elif self.wpm >= 31 and self.wpm <=70:
                 # draw cheetah image
                 self.speed_img = pygame.image.load('cheetah.png')
                 self.speed_img = pygame.transform.scale(self.speed_img, (250,140))
                 #screen.blit(self.time_img, (80,320))
-                screen.blit(self.speed_img, (self.w/2-355,self.h-145))
+                screen.blit(self.speed_img, (self.w/2-355,self.h-135))
               else:
                 # draw quicksilver animated image
                 self.speed_img = pygame.image.load('quicksilver_animated.png')
                 self.speed_img = pygame.transform.scale(self.speed_img, (170,170))
                 #screen.blit(self.time_img, (80,320))
-                screen.blit(self.speed_img, (self.w/2-345,self.h-175))
+                screen.blit(self.speed_img, (self.w/2-345,self.h-167))
   
               # draw icon image
               self.time_img = pygame.image.load('icon.png')
               self.time_img = pygame.transform.scale(self.time_img, (150,150))
               #screen.blit(self.time_img, (80,320))
-              screen.blit(self.time_img, (self.w/2-75,self.h-140))
-              self.draw_text(screen,"Reset", self.h - 70, 26, (100,100,100))
+              screen.blit(self.time_img, (self.w/2-75,self.h-120))
+              self.draw_text(screen,"Reset", self.h - 50, 26, (100,100,100))
               
               print(self.results)
               pygame.display.update()
@@ -138,7 +138,7 @@ def speed_typing_gui_screen():
                               print(self.input_text)
                               self.show_results(self.screen)
                               print(self.results)
-                              self.draw_text(self.screen, self.results,350, 28, self.RESULT_C)  
+                              self.draw_text(self.screen, self.results,325, 28, self.RESULT_C)  
                               self.end = True
                               
                           elif event.key == pygame.K_BACKSPACE:
