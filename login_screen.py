@@ -1,9 +1,8 @@
 #import modules
- 
 from tkinter import *
 import os
 
-#REPOSITION BUTTONS
+#Reposition buttons
 
 # Designing window for registration
 def login_screen_gui(): 
@@ -19,7 +18,8 @@ def login_screen_gui():
       global password_entry
       username = StringVar()
       password = StringVar()
-   
+
+      #Creates register screen details which has an inputable username and password field.
       Label(register_screen, text="Please enter details below", bg="#87ceeb", relief="solid", height=2, font=("Calibri", 13)).pack()
       Label(register_screen, text="").pack()
       Label(register_screen, height=1).pack()
@@ -71,10 +71,8 @@ def login_screen_gui():
       Label(login_screen, height=3).pack()
       Label(login_screen, width="300", height="3", bg="dimgrey").pack()
    
-  # Implementing event on register button
-   
+  # Implementing event on register button which saves the username and password information to a seperate file that gets recognized.
   def register_user():
-   
       username_info = username.get()
       password_info = password.get()
    
@@ -88,8 +86,7 @@ def login_screen_gui():
    
       Label(register_screen, text="Registration Success", fg="green", font=("calibri", 11)).pack()
    
-  # Implementing event on login button 
-   
+  # Implementing event on login button which matches the file from the username and password registeration, running the function long_sucess
   def login_verify():
       username1 = username_verify.get()
       password1 = password_verify.get()
@@ -109,8 +106,7 @@ def login_screen_gui():
       else:
           user_not_found()
    
-  # Designing popup for login success
-   
+  # Designing popup for login success that can have the user click on the button "OK," automatically destroying all the pop-ups
   def login_sucess():
       global login_success_screen
       global exitlogin #USE THISSS
@@ -125,8 +121,7 @@ def login_screen_gui():
       # Label(exitlogin, text="Exit").pack()
       # Button(exitlogin, text="Ok", command=delete_login_screen).pack()
    
-  # Designing popup for login invalid password
-   
+  # Designing popup for login invalid password showing "Invalid Password" and click on "OK" to retry
   def password_not_recognised():
       global password_not_recog_screen
       password_not_recog_screen = Toplevel(login_screen)
@@ -136,7 +131,6 @@ def login_screen_gui():
       Button(password_not_recog_screen, text="OK", command=delete_password_not_recognised).pack()
    
   # Designing popup for user not found
-   
   def user_not_found():
       global user_not_found_screen
       user_not_found_screen = Toplevel(login_screen)
@@ -145,8 +139,7 @@ def login_screen_gui():
       Label(user_not_found_screen, text="User Not Found").pack()
       Button(user_not_found_screen, text="OK", command=delete_user_not_found_screen).pack()
    
-  # Deleting popups
-
+  # Functions to delete pop-ups
   def delete_login_screen():
       login_screen.destroy()
 
@@ -165,21 +158,22 @@ def login_screen_gui():
    
    
   # Designing Main(first) window
-   
   def main_account_screen():
       global main_screen
       main_screen = Tk()
+      #Set pop-up screen size to 400x350 for main window
       main_screen.geometry("400x350")
       main_screen.title("Account Login")
+      #Title on top centered with blue background and black border
       Label(text="Select Your Choice", bg="#87ceeb", width="300", relief="solid", height="2", font=("Calibri", 13)).pack()
-    #CAN I USE THIS METHOD???
       Label(height="3").pack()
-      Label(text="").pack()
+      Label(text="").pack
+      #Creates the login and register buttons which takes them to their corresponding new pop-up
       Button(text="Login", height="3", width="30", command = login).pack()
       Label(text="").pack()
       Button(text="Register", height="3", width="30", command=register).pack()
       Label(height="4").pack()
-      Label(width="300", height="2", bg="dimgrey").pack()
+      Label(width="300", height="2", bg="dimgrey").pack() #Gray background for main window
       main_screen.mainloop()
    
    

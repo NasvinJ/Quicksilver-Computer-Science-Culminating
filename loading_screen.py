@@ -1,6 +1,8 @@
+#imports pygame and other modules
 import pygame,sys,time
 from pygame import display, event, draw
 import random
+import os
 
 def loading_screen_gui():
   pygame.init()
@@ -25,11 +27,13 @@ def loading_screen_gui():
 
   BG=pygame.image.load("quicksilver_static.jpg")
 
+  #Colors variables uses RGB to create 3 colors (red, yellow, and blue) with x and y coordinates for the rectangles
   colors = [[255, 0, 0], [0, 192, 192], [255, 255, 0]]
   screen.blit(BG, (0, 0))
   rectX = 0
   rectY = 275
-  
+
+  #Total of 8 rectangles (size of 30x30) that wait 0.5 seconds to appears in a cascade, the colors randomize with each rectangle, and a spacing of 80px between each rectangles
   for i in range(1,9):
    rectX = rectX + 80
    rectangle = (rectX, rectY, 30, 30)
@@ -42,5 +46,3 @@ def loading_screen_gui():
     for myevent in allevents:
       if myevent.type == pygame.QUIT:
         sys.exit()
-  
-    display.flip()
