@@ -83,7 +83,7 @@ def home_screen_gui():
 
         #Creates the Typing Speed Test button as the first game, which is in white and when hovered on turns black
         typing_test_button = Button(image=None,
-                        pos=(155, 200),
+                        pos=(165, 200),
                         text_input="Typing Speed Test",
                         font=get_font(24),
                         base_color="White",

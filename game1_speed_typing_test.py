@@ -78,6 +78,7 @@ def speed_typing_gui_screen():
               #Inputs the actual string of the results
               self.results = 'Time:'+str(round(self.total_time)) +" secs   Accuracy:"+ str(round(self.accuracy)) + "%" + '   Wpm: ' + str(round(self.wpm))
 
+
               #Using if-else statements, if the user gets a score of 30 or less then an image of a turtle is shown on the bottom left corner, but if they get between 31 to 70 then a cheetah is shown, while a score that is 71 or higher is a cartoon image of Quicksilver. The computer icon is inputed in the bottom middle as a button which when clicked on, runs the reset function to retry
               if self.wpm <= 30:
                 # draw turtle image
@@ -103,7 +104,8 @@ def speed_typing_gui_screen():
               
               print(self.results)
               pygame.display.update()
-  
+
+    
       def run(self):
           self.reset_game()
       
@@ -184,11 +186,12 @@ def speed_typing_gui_screen():
           msg = "Inspirational Quotes"
           self.draw_text(self.screen, msg,140, 50,self.HEAD_C) 
           # draw the rectangle for input box
-          pygame.draw.rect(self.screen,(255,192,25), (50,250,650,50), 2)
+          hi = pygame.draw.rect(self.screen,(255,192,25), (50,250,650,50), 2)
   
           # draw the sentence string
           self.draw_text(self.screen, self.word,200, 28,self.TEXT_C)
-          
+
+
           pygame.display.update()
   
   Game().run()

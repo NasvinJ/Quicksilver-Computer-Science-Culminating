@@ -34,7 +34,11 @@ def login_screen_gui():
       password_entry.pack()
       Label(register_screen, text="").pack()
       Button(register_screen, text="Register", width=10, height=1, bg="#87ceeb", command = register_user).pack()
-      Label(register_screen, height=3).pack()
+    
+      def delete_register_screen():
+        register_screen.destroy()
+      Button(register_screen, text="Back", width=8, height=1, bg="#FF0000", command = delete_register_screen).pack()
+      Label(register_screen, height=2).pack()
       Label(register_screen, width="300", height="3", bg="dimgrey").pack()
    
    
@@ -68,10 +72,11 @@ def login_screen_gui():
       password_login_entry.pack()
       Label(login_screen, text="").pack()
       Button(login_screen, text="Login", width=10, height=1, bg="#87ceeb", command = login_verify).pack()
-      Label(login_screen, height=3).pack()
+      Button(login_screen, text="Back", width=8, height=1, bg="#FF0000", command = delete_login_screen).pack()
+      Label(login_screen, height=2).pack()
       Label(login_screen, width="300", height="3", bg="dimgrey").pack()
    
-  # Implementing event on register button which saves the username and password information to a seperate file that gets recognized.
+  # Implementing event on register button which saves the username and password information to a seperate file each time that gets recognized.
   def register_user():
       username_info = username.get()
       password_info = password.get()
@@ -109,17 +114,14 @@ def login_screen_gui():
   # Designing popup for login success that can have the user click on the button "OK," automatically destroying all the pop-ups
   def login_sucess():
       global login_success_screen
-      global exitlogin #USE THISSS
+      global exitlogin
       login_success_screen = Toplevel(login_screen)
       login_success_screen.title("Success")
       login_success_screen.geometry("250x200")
-      # exitlogin = Toplevel(login_screen)
-      # exitlogin.title("Exit Login Screen")
-      # exitlogin.geometry("250x200")
+      Label(login_success_screen, height=2).pack()
       Label(login_success_screen, text="Login Success").pack()
-      Button(login_success_screen, text="OK", command=delete_login_success and delete_login_screen and delete_main_screen).pack()
-      # Label(exitlogin, text="Exit").pack()
-      # Button(exitlogin, text="Ok", command=delete_login_screen).pack()
+      Label(login_success_screen, height=1).pack()
+      Button(login_success_screen, text="OK", bg="#1a9200", command=delete_login_success and delete_login_screen and delete_main_screen).pack()
    
   # Designing popup for login invalid password showing "Invalid Password" and click on "OK" to retry
   def password_not_recognised():
@@ -127,8 +129,10 @@ def login_screen_gui():
       password_not_recog_screen = Toplevel(login_screen)
       password_not_recog_screen.title("Success")
       password_not_recog_screen.geometry("250x200")
+      Label(password_not_recog_screen, height=2).pack()
       Label(password_not_recog_screen, text="Invalid Password ").pack()
-      Button(password_not_recog_screen, text="OK", command=delete_password_not_recognised).pack()
+      Label(password_not_recog_screen, height=1).pack()
+      Button(password_not_recog_screen, text="OK", bg="#1a9200", command=delete_password_not_recognised).pack()
    
   # Designing popup for user not found
   def user_not_found():
@@ -136,8 +140,10 @@ def login_screen_gui():
       user_not_found_screen = Toplevel(login_screen)
       user_not_found_screen.title("Success")
       user_not_found_screen.geometry("250x200")
+      Label(user_not_found_screen, height=2).pack()
       Label(user_not_found_screen, text="User Not Found").pack()
-      Button(user_not_found_screen, text="OK", command=delete_user_not_found_screen).pack()
+      Label(user_not_found_screen, height=1).pack()
+      Button(user_not_found_screen, text="OK", bg="#1a9200", command=delete_user_not_found_screen).pack()
    
   # Functions to delete pop-ups
   def delete_login_screen():
@@ -152,13 +158,13 @@ def login_screen_gui():
   def delete_password_not_recognised():
       password_not_recog_screen.destroy()
    
-   
   def delete_user_not_found_screen():
       user_not_found_screen.destroy()
    
    
-  # Designing Main(first) window
+  # Designing Main (first) window
   def main_account_screen():
+      global main_account_screen
       global main_screen
       main_screen = Tk()
       #Set pop-up screen size to 400x350 for main window
@@ -172,8 +178,9 @@ def login_screen_gui():
       Button(text="Login", height="3", width="30", command = login).pack()
       Label(text="").pack()
       Button(text="Register", height="3", width="30", command=register).pack()
-      Label(height="4").pack()
-      Label(width="300", height="2", bg="dimgrey").pack() #Gray background for main window
+      Label(height="5").pack()
+      Label(width="300", height="3", bg="dimgrey").pack() #Grey background for main window
+    
       main_screen.mainloop()
    
    
